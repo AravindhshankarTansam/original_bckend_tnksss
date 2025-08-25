@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'TNKSSS ADMIN') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -33,9 +33,38 @@
                         </svg>
                     </div>
                     <ul x-show="open" x-transition class="mt-2 pl-4 space-y-1">
-                        <li>
-                            <a href="{{ route('slider.index') }}" class="block py-1 px-2 rounded hover:bg-gray-100">Home Page Slider</a>
-                        </li>
+
+                     <!-- ✅ Header -->
+                    <li>
+                        <a href="{{ route('admin.header.index') }}" class="block py-1 px-2 rounded hover:bg-gray-100">
+                            Header
+                        </a>
+                    </li>
+
+                    <!-- Hero text -->
+                    <li>
+                        <a href="{{ route('admin.hero.index') }}" class="block py-1 px-2 rounded hover:bg-gray-100">
+                            Hero text
+                        </a>
+                    </li>
+                    <!-- ✅ Footer (new) -->
+                    <li>
+                        <a href="{{ route('admin.footer.index') }}" class="block py-1 px-2 rounded hover:bg-gray-100">
+                            Footer
+                        </a>
+                    </li>
+                    <!-- home page slider -->
+                    <li>
+                        <a href="{{ route('slider.index') }}" class="block py-1 px-2 rounded hover:bg-gray-100">Home Page Slider</a>
+                    </li>
+                    <!-- About us -->
+                    <li>
+                        <a href="{{ route('admin.about.index') }}" class="block py-1 px-2 rounded hover:bg-gray-100">About us</a>
+                    </li>
+                    <!-- Gallery -->
+                     <li>
+                        <a href="{{ route('admin.gallery.index') }}" class="block py-1 px-2 rounded hover:bg-gray-100">Gallery</a>
+                     </li>
                     </ul>
                 </div>
 
