@@ -77,11 +77,25 @@ class GalleryController extends Controller
     }
 
     // Public API
-    public function public() {
-        $galleries = Gallery::where('is_public', true)->get();
-        return response()->json([
-            'success' => true,
-            'data' => $galleries
-        ]);
-    }
+public function public() {
+    $galleries = Gallery::where('is_public', true)->get();
+
+    // Transform each gallery to include full URL for the image if it exists
+    $galleries = $galleries->map(function ($item) {
+        if (isset($item->image) && $item->image) {
+            $item->image = url($item->image);
+        }
+        return $item;
+    });
+
+    return response()->json([
+        'success' => true,
+        'data' => $galleries
+    ], 200, [
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers' => 'Content-Type, Authorization',
+    ]);
+}
+
 }

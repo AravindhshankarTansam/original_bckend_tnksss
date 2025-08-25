@@ -89,4 +89,27 @@ public function store(Request $request)
             ->route('admin.header.index')
             ->with('success', 'Header updated successfully!');
     }
+    
+
+    public function public()
+{
+    $headers = Header::where('is_public', 1)->latest()->get();
+
+    $headers = $headers->map(function ($item) {
+        if (isset($item->image) && $item->image) {
+            $item->image = url('storage/' . $item->image);
+        }
+        return $item;
+    });
+
+    return response()->json([
+        'success' => true,
+        'data' => $headers
+    ], 200, [
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers' => 'Content-Type, Authorization',
+    ]);
+}
+
 }

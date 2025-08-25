@@ -79,7 +79,8 @@ public function public()
     // Transform each footer to include full URL for the image
     $footers = $footers->map(function ($footer) {
         if ($footer->image) {
-            $footer->image = url($footer->image); // full URL
+            // Use Storage::url() to generate the correct path
+            $footer->image = asset(Storage::url($footer->image));
         }
         return $footer;
     });
@@ -93,5 +94,6 @@ public function public()
         'Access-Control-Allow-Headers' => 'Content-Type, Authorization',
     ]);
 }
+
 
 }
