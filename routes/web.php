@@ -63,6 +63,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
 // Public slider route (optional)
 Route::get('/public/sliders', [SliderController::class, 'public'])->name('sliders.public');
+// Public Headers
+Route::get('/public/headers', [HeaderController::class, 'public'])->name('headers.public');
+
 // Public footer route
 Route::get('/public/footers', [FooterController::class, 'public'])->name('footers.public');
 // Public hero texts route
